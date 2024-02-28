@@ -1,10 +1,12 @@
-import Button from '@mui/material/Button';
+import { ThemeProvider, useTheme } from '@mui/material/styles';
+import Header from './ui/Header';
+import basicTheme from './ui/Theme';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <ThemeProvider theme={basicTheme}>
+      <Header />
+    </ThemeProvider>
   );
 }
 
