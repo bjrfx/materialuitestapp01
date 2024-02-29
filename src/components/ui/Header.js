@@ -1,10 +1,10 @@
 import React from "react";
 import { AppBar } from "@mui/material";
 import { Toolbar } from "@mui/material";
-import PropTypes from 'prop-types';
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Typography from "@mui/material/Typography";
-
+//import styled from '@emotion/styled';
+import {styled, useTheme} from "@mui/material/styles";
 
 function ElevationScroll(props) {
     const { children } = props;
@@ -14,27 +14,22 @@ function ElevationScroll(props) {
     });
   
     return React.cloneElement(children, {
-      elevation: trigger ? 4 : 0,
+      elevation: trigger ? 4 : 0
     });
   }
-  
-  ElevationScroll.propTypes = {
-    children: PropTypes.element.isRequired,
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
-    window: PropTypes.func,
-  };
 
-//   const useStyles = makeStyles(theme => ({
+//   const useStyles = styled(theme => ({
 //     toolbarMargin: {
 //         ...theme.mixins.toolbar
 //     }
 //   }))
+        const StyledHeader = styled(AppBar)(({theme}) => ({
+            minHeight: 100,
+            ...theme.mixins.toolbar
+        }))
 
 export default function Header(props) {
-    // const classes = useStyles()
+    const theme = useTheme();
     return (
         <React.Fragment>
             <ElevationScroll>
@@ -46,7 +41,7 @@ export default function Header(props) {
                     </Toolbar>
             </AppBar>
         </ElevationScroll>
-        {/* <div className={classes.toolbarMargin} /> */}
+        
         </React.Fragment>
     )
 }
